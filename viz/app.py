@@ -1,6 +1,8 @@
 from flask import Flask, render_template, Response
-
+import numpy as np
 import redis
+import json
+
 
 app = Flask(__name__)
 r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
@@ -23,6 +25,15 @@ def show_homepage():
 def show_basic():
   #Basic d3 view = basic.html and app.js
     return render_template("basic.html")
+
+
+@app.route('/base')
+def base():
+      return render_template("base.html")
+
+@app.route('/index')
+def index():
+      return render_template("index.html")
 
 @app.route('/map')
 def show_map():
